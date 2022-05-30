@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
@@ -12,10 +12,11 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Resting EEG" href="resting_eeg.html" />
@@ -253,7 +254,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -292,7 +293,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Picture-memory">
-<h1>Picture memory<a class="headerlink" href="#Picture-memory" title="Permalink to this headline">¶</a></h1>
+<h1>Picture memory<a class="headerlink" href="#Picture-memory" title="Permalink to this heading">¶</a></h1>
 <p>This builds on the P300 and WR example.</p>
 <p>Design * study-test recognition memory * Study phase: 50 pictures were presented for 2s and judged “like” or “dislike”, indicated by a button press * Test phase: The same 50 studied items were presented with 50 distractor items in pseudo-random order and judged “old” or “new”. * The 50 studied and 50 distractor items are counterbalanced across subjects so the individual pictures are studied for half the participants and distractors for the other half.</p>
 <p>Automated code tagging * tag individual stimulus items are * stimulus categories * response categories * <strong>local</strong> (within-trial) stimulus-response contigent tags: “old”, “new”, “hit”, “miss”, “correct rejection”, “false alarm”</p>
@@ -302,8 +303,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span> <span class="nn">re</span>
@@ -336,21 +336,20 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-mkpy_data_examples_101821
-3.8.12 | packaged by conda-forge | (default, Oct 12 2021, 21:59:51)
-[GCC 9.4.0]
-numpy 1.21.2 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/numpy/__init__.py
-pandas 1.3.4 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/pandas/__init__.py
-mkpy 0.2.6 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/__init__.py
-spudtr 0.1.0 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/spudtr/__init__.py
+mkconda_dev_py39_053022
+3.9.13 | packaged by conda-forge | (main, May 27 2022, 16:56:21)
+[GCC 10.3.0]
+numpy 1.21.6 /home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/numpy/__init__.py
+pandas 1.1.5 /home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/pandas/__init__.py
+mkpy 0.2.6 /home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/mkpy/__init__.py
+spudtr 0.1.0 /home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/spudtr/__init__.py
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># set filenames</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set filenames</span>
 <span class="n">crw</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkdig/sub000pm.crw&quot;</span>    <span class="c1"># EEG recording</span>
 <span class="n">log</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkdig/sub000pm.x.log&quot;</span>  <span class="c1"># events</span>
 <span class="n">yhdr</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/sub000pm.yhdr&quot;</span>   <span class="c1"># extra header info</span>
@@ -370,8 +369,7 @@ spudtr 0.1.0 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># convert to HDF5</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert to HDF5</span>
 <span class="n">pm_h5</span> <span class="o">=</span> <span class="n">mkh5</span><span class="o">.</span><span class="n">mkh5</span><span class="p">(</span><span class="n">pm_h5_f</span><span class="p">)</span>
 <span class="n">pm_h5</span><span class="o">.</span><span class="n">reset_all</span><span class="p">()</span>
 <span class="n">pm_h5</span><span class="o">.</span><span class="n">create_mkdata</span><span class="p">(</span><span class="s2">&quot;sub000&quot;</span><span class="p">,</span> <span class="n">crw</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">yhdr</span><span class="p">)</span>
@@ -397,7 +395,7 @@ spudtr 0.1.0 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:3669: UserWarning: negative event code(s) found for cal condition code 0 -16384
+/home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/mkpy/mkh5.py:3669: UserWarning: negative event code(s) found for cal condition code 0 -16384
   warnings.warn(msg)
 </pre></div></div>
 </div>
@@ -423,17 +421,14 @@ Calibrating block /sub000/dblock_3 of 4: (28416,)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 
 <span class="nb">echo</span> <span class="s2">&quot;study phase head&quot;</span>
 head <span class="si">${</span><span class="nv">MDE_HOME</span><span class="si">}</span>/mkpy/pm_item_id_by_scn.tsv
 
 <span class="nb">echo</span> <span class="s2">&quot;test phase tail&quot;</span>
 tail <span class="si">${</span><span class="nv">MDE_HOME</span><span class="si">}</span>/mkpy/pm_item_id_by_scn.tsv
-
-
-</pre></div>
+<br/><br/></pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -469,8 +464,7 @@ test phase tail
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># read the item information table</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read the item information table</span>
 <span class="n">pm_items</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
     <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/pm_item_id_by_scn.tsv&quot;</span><span class="p">,</span>
     <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span>
@@ -652,8 +646,7 @@ test phase tail
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># study phase codemape file name</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># study phase codemape file name</span>
 <span class="n">pm_study_codemap_f</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/pm_study_codemap.tsv&quot;</span>
 
 <span class="n">pm_study_codemap_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;regexp&quot;</span><span class="p">,</span> <span class="s2">&quot;study_bin_id&quot;</span><span class="p">,</span> <span class="s2">&quot;animacy&quot;</span><span class="p">,</span> <span class="s2">&quot;study_response&quot;</span><span class="p">,</span> <span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">pm_items</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
@@ -860,8 +853,7 @@ test phase tail
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pm_study_event_table</span> <span class="o">=</span> <span class="n">pm_h5</span><span class="o">.</span><span class="n">get_event_table</span><span class="p">(</span><span class="n">pm_study_codemap_f</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pm_study_event_table</span> <span class="o">=</span> <span class="n">pm_h5</span><span class="o">.</span><span class="n">get_event_table</span><span class="p">(</span><span class="n">pm_study_codemap_f</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -878,7 +870,7 @@ searching codes in: sub000/dblock_0
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:1060: UserWarning:
+/home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/mkpy/mkh5.py:1060: UserWarning:
 As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
 ccode column in pm_study_codemap.tsv must also match the log_ccode
 in the datablock. If this behavior is not desired, delete or rename
@@ -901,8 +893,7 @@ searching codes in: sub000/dblock_3
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;study phase (shape):&quot;</span><span class="p">,</span> <span class="n">pm_study_event_table</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;study phase (shape):&quot;</span><span class="p">,</span> <span class="n">pm_study_event_table</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;study phase columns:&quot;</span><span class="p">,</span> <span class="n">pm_study_event_table</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
 
 <span class="c1"># select some columns to show</span>
@@ -1302,8 +1293,7 @@ is_anchor:  False
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># test phase codemap name</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test phase codemap name</span>
 <span class="n">pm_test_codemap_f</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/pm_test_codemap.tsv&quot;</span>
 
 <span class="c1"># test phase codemap column names</span>
@@ -1537,8 +1527,7 @@ is_anchor:  False
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pm_test_event_table</span> <span class="o">=</span> <span class="n">pm_h5</span><span class="o">.</span><span class="n">get_event_table</span><span class="p">(</span><span class="n">pm_test_codemap_f</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pm_test_event_table</span> <span class="o">=</span> <span class="n">pm_h5</span><span class="o">.</span><span class="n">get_event_table</span><span class="p">(</span><span class="n">pm_test_codemap_f</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1555,7 +1544,7 @@ searching codes in: sub000/dblock_0
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:1060: UserWarning:
+/home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/mkpy/mkh5.py:1060: UserWarning:
 As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
 ccode column in pm_test_codemap.tsv must also match the log_ccode
 in the datablock. If this behavior is not desired, delete or rename
@@ -1578,8 +1567,7 @@ searching codes in: sub000/dblock_3
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test phase (shape):&quot;</span><span class="p">,</span> <span class="n">pm_test_event_table</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test phase (shape):&quot;</span><span class="p">,</span> <span class="n">pm_test_event_table</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test phase columns:&quot;</span><span class="p">,</span> <span class="n">pm_test_event_table</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 
 <span class="c1"># select some columns to show</span>
@@ -2252,8 +2240,7 @@ is_anchor:  False
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># ----------------------------------------------</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----------------------------------------------</span>
 <span class="c1"># prune event tables to unique single trials</span>
 <span class="c1"># ----------------------------------------------</span>
 
@@ -2273,8 +2260,7 @@ is_anchor:  False
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># --------------------------------------------------------</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --------------------------------------------------------</span>
 <span class="c1"># update study phase events with test phase responses</span>
 <span class="c1"># --------------------------------------------------------</span>
 
@@ -2518,8 +2504,7 @@ Study phase items after joining test phase responses ...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># --------------------------------------------------------</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --------------------------------------------------------</span>
 <span class="c1"># update test phase event table with study phase responses</span>
 <span class="c1"># ---------------------------------------------------------</span>
 
@@ -2832,8 +2817,7 @@ Test phase items after (100, 35)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pm_h5</span><span class="o">.</span><span class="n">set_epochs</span><span class="p">(</span><span class="s2">&quot;study_ms1500&quot;</span><span class="p">,</span> <span class="n">pm_study_events_for_epochs</span><span class="p">,</span> <span class="o">-</span><span class="mi">750</span><span class="p">,</span> <span class="mi">750</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pm_h5</span><span class="o">.</span><span class="n">set_epochs</span><span class="p">(</span><span class="s2">&quot;study_ms1500&quot;</span><span class="p">,</span> <span class="n">pm_study_events_for_epochs</span><span class="p">,</span> <span class="o">-</span><span class="mi">750</span><span class="p">,</span> <span class="mi">750</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2850,8 +2834,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pm_study_epochs_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000pm.study_ms1500.epochs.feather&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pm_study_epochs_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000pm.study_ms1500.epochs.feather&quot;</span>
 <span class="n">pm_h5</span><span class="o">.</span><span class="n">export_epochs</span><span class="p">(</span><span class="s2">&quot;study_ms1500&quot;</span><span class="p">,</span> <span class="n">pm_study_epochs_f</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;feather&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2861,8 +2844,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pm_h5</span><span class="o">.</span><span class="n">set_epochs</span><span class="p">(</span><span class="s2">&quot;test_ms1500&quot;</span><span class="p">,</span> <span class="n">pm_test_events_for_epochs</span><span class="p">,</span> <span class="o">-</span><span class="mi">750</span><span class="p">,</span> <span class="mi">750</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pm_h5</span><span class="o">.</span><span class="n">set_epochs</span><span class="p">(</span><span class="s2">&quot;test_ms1500&quot;</span><span class="p">,</span> <span class="n">pm_test_events_for_epochs</span><span class="p">,</span> <span class="o">-</span><span class="mi">750</span><span class="p">,</span> <span class="mi">750</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2879,8 +2861,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pm_test_epochs_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000pm.test_ms1500.epochs.feather&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pm_test_epochs_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000pm.test_ms1500.epochs.feather&quot;</span>
 <span class="n">pm_h5</span><span class="o">.</span><span class="n">export_epochs</span><span class="p">(</span><span class="s2">&quot;test_ms1500&quot;</span><span class="p">,</span> <span class="n">pm_test_epochs_f</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;feather&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2895,8 +2876,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># matplotlib line colors, background, fonts</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># matplotlib line colors, background, fonts</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;bmh&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2906,8 +2886,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># load and sanitize epoch_id for pandas index</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load and sanitize epoch_id for pandas index</span>
 <span class="n">pm_study_epochs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">pm_study_epochs_f</span><span class="p">)</span>
 <span class="n">pm_study_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pm_study_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
 
@@ -3045,8 +3024,7 @@ After excluding EEG artifacts
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">for</span> <span class="n">grp</span> <span class="ow">in</span> <span class="p">[[</span><span class="s2">&quot;animacy&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;study_response&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;animacy&quot;</span><span class="p">,</span> <span class="s2">&quot;study_response&quot;</span><span class="p">]]:</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">grp</span> <span class="ow">in</span> <span class="p">[[</span><span class="s2">&quot;animacy&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;study_response&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;animacy&quot;</span><span class="p">,</span> <span class="s2">&quot;study_response&quot;</span><span class="p">]]:</span>
 
     <span class="c1"># compute domain average by stim type</span>
     <span class="n">midline_erps</span> <span class="o">=</span> <span class="n">midline_epochs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
@@ -3075,8 +3053,7 @@ After excluding EEG artifacts
     <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
     <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Study phase:</span><span class="se">\n</span><span class="si">{</span><span class="s1">&#39;:&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">grp</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -3105,8 +3082,7 @@ After excluding EEG artifacts
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># load and sanitize epoch_id for pandas index</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load and sanitize epoch_id for pandas index</span>
 <span class="n">pm_test_epochs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">pm_test_epochs_f</span><span class="p">)</span>
 <span class="n">pm_test_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pm_test_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pm_test_epochs</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
@@ -3235,8 +3211,7 @@ After excluding EEG artifacts
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># for illustration ...</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for illustration ...</span>
 <span class="n">midline</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MiPf&quot;</span><span class="p">,</span> <span class="s2">&quot;MiCe&quot;</span><span class="p">,</span> <span class="s2">&quot;MiPa&quot;</span><span class="p">,</span> <span class="s2">&quot;MiOc&quot;</span><span class="p">]</span>
 
 <span class="c1"># select COLUMNS: epoch index, timestamps, event tags, and midline EEG columns</span>
@@ -3260,8 +3235,7 @@ After excluding EEG artifacts
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># plot separately and together</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot separately and together</span>
 <span class="k">for</span> <span class="n">grp</span> <span class="ow">in</span> <span class="p">[[</span><span class="s2">&quot;animacy&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;test_response&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;animacy&quot;</span><span class="p">,</span> <span class="s2">&quot;test_response&quot;</span><span class="p">]]:</span>
 
     <span class="c1"># compute domain average by stim type</span>
@@ -3292,8 +3266,7 @@ After excluding EEG artifacts
     <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
     <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;test phase:</span><span class="se">\n</span><span class="si">{</span><span class="s1">&#39;:&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">grp</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
     <span class="n">f</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -3318,14 +3291,13 @@ After excluding EEG artifacts
 </div>
 </div>
 <section id="Appendix">
-<h2>Appendix<a class="headerlink" href="#Appendix" title="Permalink to this headline">¶</a></h2>
+<h2>Appendix<a class="headerlink" href="#Appendix" title="Permalink to this heading">¶</a></h2>
 <p>Python code to generate the study and test code maps from the stimulus files</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 
 cat <span class="si">${</span><span class="nv">MDE_HOME</span><span class="si">}</span>/scripts/make_pm_codemaps.py
 </pre></div>
@@ -3704,12 +3676,16 @@ if __name__ == &#34;__main__&#34;:
 <li class="toctree-l1"><a class="reference internal" href="resting_eeg.html">Resting EEG</a></li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="wr.html"
-                        title="previous chapter">Word repetition memory</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="resting_eeg.html"
-                        title="next chapter">Resting EEG</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="wr.html"
+                          title="previous chapter">Word repetition memory</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="resting_eeg.html"
+                          title="next chapter">Resting EEG</a></p>
+  </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -3732,7 +3708,7 @@ if __name__ == &#34;__main__&#34;:
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Thomas P. Urbach.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.0.
     </div>
   </body>
 </html>

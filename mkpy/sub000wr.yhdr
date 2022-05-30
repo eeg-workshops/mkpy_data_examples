@@ -49,7 +49,7 @@ streams:
     gain: *10K
     hphz: *hp
     lphz: *lp
-    mne_type: eog
+    mne_type: eeg
  
   # 1
   lhz:
@@ -58,7 +58,7 @@ streams:
     gain: *10K
     hphz: *hp
     lphz: *lp
-    mne_type: eog
+    mne_type: eeg
  
   # 2
   MiPf:
@@ -202,7 +202,7 @@ streams:
     gain: *20K
     hphz: *hp
     lphz: *lp
-    mne_type: eog
+    mne_type: eeg
  
   # 31
   rhz:
@@ -211,7 +211,7 @@ streams:
     gain: *20K
     hphz: *hp
     lphz: *lp
-    mne_type: eog
+    mne_type: eeg
  
   # 28
   A2:

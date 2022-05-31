@@ -1,21 +1,22 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>P50 Paired-click &#8212; mkpy_data_examples 0.0.5 documentation</title>
+    <title>P50 Paired-click &#8212; mkpy_data_examples 0.0.6 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="P3 Auditory oddball" href="p3.html" />
@@ -33,7 +34,7 @@
         <li class="right" >
           <a href="background.html" title="Background: EEG, events, and epochs"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.6 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">P50 Paired-click</a></li> 
       </ul>
     </div>  
@@ -253,7 +254,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -292,7 +293,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="P50-Paired-click">
-<h1>P50 Paired-click<a class="headerlink" href="#P50-Paired-click" title="Permalink to this headline">¶</a></h1>
+<h1>P50 Paired-click<a class="headerlink" href="#P50-Paired-click" title="Permalink to this heading">¶</a></h1>
 <p>Design:</p>
 <ul class="simple">
 <li><p>trial: two auditory clicks, 500 ms SOA</p></li>
@@ -302,8 +303,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span> <span class="nn">re</span>
@@ -311,10 +311,10 @@ div.rendered_html tbody tr:hover {
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">mkpy</span>
 <span class="kn">import</span> <span class="nn">spudtr</span>
+<span class="kn">from</span> <span class="nn">spudtr</span> <span class="kn">import</span> <span class="n">epf</span>
 
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">mkpy</span> <span class="kn">import</span> <span class="n">mkh5</span>
-<span class="kn">from</span> <span class="nn">spudtr</span> <span class="kn">import</span> <span class="n">epf</span>
 
 <span class="c1"># path wrangling for nbsphinx</span>
 <span class="k">if</span> <span class="s2">&quot;MDE_HOME&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -335,21 +335,20 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-mkpy_data_examples_101821
-3.8.12 | packaged by conda-forge | (default, Oct 12 2021, 21:59:51)
-[GCC 9.4.0]
-numpy 1.21.2 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/numpy/__init__.py
-pandas 1.3.4 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/pandas/__init__.py
-mkpy 0.2.6 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/__init__.py
-spudtr 0.1.0 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/spudtr/__init__.py
+mkconda_dev_py39_053022
+3.9.13 | packaged by conda-forge | (main, May 27 2022, 16:56:21)
+[GCC 10.3.0]
+numpy 1.21.6 /home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/numpy/__init__.py
+pandas 1.1.5 /home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/pandas/__init__.py
+mkpy 0.2.7 /mnt/cube/home/turbach/TPU_Projects/mkpy/mkpy/__init__.py
+spudtr 0.1.0 /home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/spudtr/__init__.py
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># set recorded ERPSS data filenames</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set recorded ERPSS data filenames</span>
 <span class="n">crw</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkdig/sub000p5.crw&quot;</span>    <span class="c1"># EEG recording</span>
 <span class="n">log</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkdig/sub000p5.x.log&quot;</span>  <span class="c1"># events</span>
 <span class="n">yhdr</span> <span class="o">=</span> <span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/sub000p5.yhdr&quot;</span>   <span class="c1"># extra header info</span>
@@ -369,8 +368,7 @@ spudtr 0.1.0 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">p50_h5</span> <span class="o">=</span> <span class="n">mkh5</span><span class="o">.</span><span class="n">mkh5</span><span class="p">(</span><span class="n">p50_h5_f</span><span class="p">)</span>  <span class="c1"># make ready</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p50_h5</span> <span class="o">=</span> <span class="n">mkh5</span><span class="o">.</span><span class="n">mkh5</span><span class="p">(</span><span class="n">p50_h5_f</span><span class="p">)</span>  <span class="c1"># make ready</span>
 
 <span class="n">p50_h5</span><span class="o">.</span><span class="n">reset_all</span><span class="p">()</span>  <span class="c1"># wipe previous</span>
 <span class="n">p50_h5</span><span class="o">.</span><span class="n">create_mkdata</span><span class="p">(</span><span class="s2">&quot;sub000&quot;</span><span class="p">,</span> <span class="n">crw</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">yhdr</span><span class="p">)</span> <span class="c1"># convert the data to HDF5</span>
@@ -396,7 +394,7 @@ spudtr 0.1.0 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:3669: UserWarning: negative event code(s) found for cal condition code 0 -16384
+/mnt/cube/home/turbach/TPU_Projects/mkpy/mkpy/mkh5.py:3666: UserWarning: negative event code(s) found for cal condition code 0 -16384
   warnings.warn(msg)
 </pre></div></div>
 </div>
@@ -419,8 +417,7 @@ Calibrating block /sub000/dblock_2 of 3: (56064,)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 head -14 <span class="nv">$MDE_HOME</span>/mkpy/p50_codemap.ytbl
 </pre></div>
 </div>
@@ -453,8 +450,7 @@ rows:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">p50_event_table</span> <span class="o">=</span> <span class="n">p50_h5</span><span class="o">.</span><span class="n">get_event_table</span><span class="p">(</span><span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/p50_codemap.ytbl&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p50_event_table</span> <span class="o">=</span> <span class="n">p50_h5</span><span class="o">.</span><span class="n">get_event_table</span><span class="p">(</span><span class="n">MDE_HOME</span> <span class="o">/</span> <span class="s2">&quot;mkpy/p50_codemap.ytbl&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -473,7 +469,7 @@ searching codes in: sub000/dblock_2
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:1060: UserWarning:
+/mnt/cube/home/turbach/TPU_Projects/mkpy/mkpy/mkh5.py:1059: UserWarning:
 As of mkpy 0.2.0 to match events with a codemap regexp pattern, the
 ccode column in p50_codemap.ytbl must also match the log_ccode
 in the datablock. If this behavior is not desired, delete or rename
@@ -487,8 +483,7 @@ the ccode column in the codemap.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;event table shape:&quot;</span><span class="p">,</span> <span class="n">p50_event_table</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;event table shape:&quot;</span><span class="p">,</span> <span class="n">p50_event_table</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;event table columns:&quot;</span><span class="p">,</span> <span class="n">p50_event_table</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">())</span>
 
 <span class="c1"># select some columns to show</span>
@@ -845,8 +840,7 @@ event table columns: [&#39;data_group&#39;, &#39;dblock_path&#39;, &#39;dblock_t
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">p50_h5</span><span class="o">.</span><span class="n">set_epochs</span><span class="p">(</span><span class="s2">&quot;ms1500&quot;</span><span class="p">,</span> <span class="n">p50_event_table</span><span class="p">,</span> <span class="o">-</span><span class="mi">750</span><span class="p">,</span> <span class="mi">750</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p50_h5</span><span class="o">.</span><span class="n">set_epochs</span><span class="p">(</span><span class="s2">&quot;ms1500&quot;</span><span class="p">,</span> <span class="n">p50_event_table</span><span class="p">,</span> <span class="o">-</span><span class="mi">750</span><span class="p">,</span> <span class="mi">750</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -863,7 +857,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:1516: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (240, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 0, 360, 360, 1, 1, 0, 64, -375, 750, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 360, 360, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 360, -375, 750)
+/mnt/cube/home/turbach/TPU_Projects/mkpy/mkpy/mkh5.py:1515: UserWarning: data error: pre-stimulus interval is out of bounds left ... skipping epoch (240, b&#39;sub000&#39;, b&#39;sub000/dblock_2&#39;, 0, 360, 360, 1, 1, 0, 64, -375, 750, 500., 1, 0, 1, b&#39;1&#39;, b&#39;1&#39;, 1, 1, 360, 360, 0, True, b&#39;(#\\d+)&#39;, 0, b&#39;cal&#39;, 0, b&#39;cal&#39;, b&#39;cal&#39;, 0, 0, 0, 360, -375, 750)
   warnings.warn(
 </pre></div></div>
 </div>
@@ -873,8 +867,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># this exports the epochs DATA ... indexed, timstamped, EEG, events, and tags.</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this exports the epochs DATA ... indexed, timstamped, EEG, events, and tags.</span>
 <span class="n">p50_epochs_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000p50.ms1500.epochs.feather&quot;</span>
 <span class="n">p50_h5</span><span class="o">.</span><span class="n">export_epochs</span><span class="p">(</span><span class="s2">&quot;ms1500&quot;</span><span class="p">,</span> <span class="n">p50_epochs_f</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s2">&quot;feather&quot;</span><span class="p">)</span>
 </pre></div>
@@ -885,8 +878,7 @@ Sanitizing event table data types for mkh5 epochs table ...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">p50_epochs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">p50_epochs_f</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p50_epochs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">p50_epochs_f</span><span class="p">)</span>
 
 <span class="c1"># sanitize epoch_id for pandas index</span>
 <span class="n">p50_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p50_epochs</span><span class="p">[</span><span class="s1">&#39;epoch_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
@@ -1018,8 +1010,7 @@ chdesc: 0:lle   1:lhz   2:MiPf  3:LLPf  4:RLPf  5:LMPf  6:RMPf  7:LDFr
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># for illustration ... cal pulses and first click</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for illustration ... cal pulses and first click</span>
 <span class="n">midline</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MiPf&quot;</span><span class="p">,</span> <span class="s2">&quot;MiCe&quot;</span><span class="p">,</span> <span class="s2">&quot;MiPa&quot;</span><span class="p">,</span> <span class="s2">&quot;MiOc&quot;</span><span class="p">]</span>
 <span class="n">bins</span> <span class="o">=</span> <span class="n">p50_epochs</span><span class="o">.</span><span class="n">bin</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 
@@ -1042,8 +1033,7 @@ chdesc: 0:lle   1:lhz   2:MiPf  3:LLPf  4:RLPf  5:LMPf  6:RMPf  7:LDFr
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># look up single trial click_2 event timestamp relative to click_1 onset (match_time)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># look up single trial click_2 event timestamp relative to click_1 onset (match_time)</span>
 <span class="n">click2_onsets</span> <span class="o">=</span> <span class="n">p50_epochs</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
     <span class="s2">&quot;ccode &gt; 0 and match_code == 1 and log_evcodes == 2&quot;</span>
 <span class="p">)</span><span class="o">.</span><span class="n">match_time</span>
@@ -1053,8 +1043,7 @@ chdesc: 0:lle   1:lhz   2:MiPf  3:LLPf  4:RLPf  5:LMPf  6:RMPf  7:LDFr
 <span class="n">display</span><span class="p">(</span><span class="n">click2_onsets</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
 <span class="n">display</span><span class="p">(</span><span class="n">click2_onsets</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 <span class="n">display</span><span class="p">(</span><span class="n">click2_onset</span><span class="p">)</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1099,8 +1088,7 @@ Name: match_time, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">midline_erps</span> <span class="o">=</span> <span class="n">midline_epochs</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="s2">&quot;match_time&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">midline_erps</span> <span class="o">=</span> <span class="n">midline_epochs</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="s2">&quot;match_time&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">midline_erps</span>
 </pre></div>
 </div>
@@ -1257,8 +1245,7 @@ Name: match_time, dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;cal&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="s2">&quot;click_1&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;click_2&quot;</span><span class="p">:</span> <span class="s2">&quot;green&quot;</span><span class="p">}</span>
 <span class="k">for</span> <span class="n">tag</span><span class="p">,</span> <span class="n">erp</span> <span class="ow">in</span> <span class="n">midline_erps</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">axi</span><span class="p">,</span> <span class="n">chan</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">midline</span><span class="p">):</span>
@@ -1310,12 +1297,16 @@ Name: match_time, dtype: float64
 <li class="toctree-l1"><a class="reference internal" href="resting_eeg.html">Resting EEG</a></li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="background.html"
-                        title="previous chapter">Background: EEG, events, and epochs</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="p3.html"
-                        title="next chapter">P3 Auditory oddball</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="background.html"
+                          title="previous chapter">Background: EEG, events, and epochs</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="p3.html"
+                          title="next chapter">P3 Auditory oddball</a></p>
+  </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1332,13 +1323,13 @@ Name: match_time, dtype: float64
         <li class="right" >
           <a href="background.html" title="Background: EEG, events, and epochs"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.6 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">P50 Paired-click</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Thomas P. Urbach.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.0.
     </div>
   </body>
 </html>

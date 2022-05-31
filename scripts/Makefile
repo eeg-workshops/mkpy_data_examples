@@ -16,3 +16,7 @@ xlogs:
 pm_codemaps:
 	python ./make_pm_codemaps.py
 
+# variety of mkh5 HDF5 data group trees written to multisub_data
+# for local testing, not uploaded to Zenodo.
+multisub:
+	python ./make_multisub_mkh5.py

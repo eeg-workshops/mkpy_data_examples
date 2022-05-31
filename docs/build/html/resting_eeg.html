@@ -1,21 +1,22 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Resting EEG &#8212; mkpy_data_examples 0.0.5 documentation</title>
+    <title>Resting EEG &#8212; mkpy_data_examples 0.0.6 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Picture memory" href="pm.html" /> 
@@ -29,7 +30,7 @@
         <li class="right" >
           <a href="pm.html" title="Picture memory"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.6 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Resting EEG</a></li> 
       </ul>
     </div>  
@@ -249,7 +250,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -288,7 +289,7 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Resting-EEG">
-<h1>Resting EEG<a class="headerlink" href="#Resting-EEG" title="Permalink to this headline">¶</a></h1>
+<h1>Resting EEG<a class="headerlink" href="#Resting-EEG" title="Permalink to this heading">¶</a></h1>
 <p>Design:</p>
 <ul class="simple">
 <li><p>3 minute recording</p></li>
@@ -312,8 +313,7 @@ re-used for the different data groups as shown below.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span> <span class="nn">re</span>
@@ -344,13 +344,13 @@ re-used for the different data groups as shown below.</p>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-mkpy_data_examples_101821
-3.8.12 | packaged by conda-forge | (default, Oct 12 2021, 21:59:51)
-[GCC 9.4.0]
-numpy 1.21.2 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/numpy/__init__.py
-pandas 1.3.4 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/pandas/__init__.py
-mkpy 0.2.6 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/__init__.py
-spudtr 0.1.0 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/spudtr/__init__.py
+mkconda_dev_py39_053022
+3.9.13 | packaged by conda-forge | (main, May 27 2022, 16:56:21)
+[GCC 10.3.0]
+numpy 1.21.6 /home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/numpy/__init__.py
+pandas 1.1.5 /home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/pandas/__init__.py
+mkpy 0.2.7 /mnt/cube/home/turbach/TPU_Projects/mkpy/mkpy/__init__.py
+spudtr 0.1.0 /home/turbach/miniconda39/envs/mkconda_dev_py39_053022/lib/python3.9/site-packages/spudtr/__init__.py
 </pre></div></div>
 </div>
 <p><strong>Convert and calibrate the ``.crw``, ``.log`` to mkpy.mkh5 format HDF5</strong></p>
@@ -363,8 +363,7 @@ spudtr 0.1.0 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># 1. set the fileHDF5 file and load the EEG data</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. set the fileHDF5 file and load the EEG data</span>
 <span class="n">eeg_h5_f</span> <span class="o">=</span> <span class="n">DOCS_DATA</span> <span class="o">/</span> <span class="s2">&quot;sub000eeg.h5&quot;</span>
 <span class="n">eeg_h5</span> <span class="o">=</span> <span class="n">mkh5</span><span class="o">.</span><span class="n">mkh5</span><span class="p">(</span><span class="n">eeg_h5_f</span><span class="p">)</span>  <span class="c1"># wipe previous</span>
 <span class="n">eeg_h5</span><span class="o">.</span><span class="n">reset_all</span><span class="p">()</span>  <span class="c1"># wipe previous</span>
@@ -415,7 +414,7 @@ spudtr 0.1.0 /home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/turbach/miniconda3/envs/mkpy_data_examples_101821/lib/python3.8/site-packages/mkpy/mkh5.py:3669: UserWarning: negative event code(s) found for cal condition code 0 -16384
+/mnt/cube/home/turbach/TPU_Projects/mkpy/mkpy/mkh5.py:3666: UserWarning: negative event code(s) found for cal condition code 0 -16384
   warnings.warn(msg)
 </pre></div></div>
 </div>
@@ -452,8 +451,7 @@ These are the HDF5 datasets in the HDF5 file
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">dblocks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dblocks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 <span class="n">hdrs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">dbp</span> <span class="ow">in</span> <span class="n">dblock_paths</span><span class="p">:</span>
 
@@ -801,8 +799,7 @@ These are the HDF5 datasets in the HDF5 file
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">#import matplotlib as mpl</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#import matplotlib as mpl</span>
 <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">}):</span>
     <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">dblock_path</span><span class="p">,</span> <span class="n">dblock_data</span> <span class="ow">in</span> <span class="n">eeg_pd</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;dblock_path&quot;</span><span class="p">):</span>
@@ -826,8 +823,7 @@ These are the HDF5 datasets in the HDF5 file
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">eeg_hdrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">hdr</span><span class="p">[</span><span class="s2">&quot;h5_dataset&quot;</span><span class="p">],</span> <span class="n">hdr</span><span class="p">)</span> <span class="k">for</span> <span class="n">hdr</span> <span class="ow">in</span> <span class="n">hdrs</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eeg_hdrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">hdr</span><span class="p">[</span><span class="s2">&quot;h5_dataset&quot;</span><span class="p">],</span> <span class="n">hdr</span><span class="p">)</span> <span class="k">for</span> <span class="n">hdr</span> <span class="ow">in</span> <span class="n">hdrs</span><span class="p">])</span>
 <span class="n">display</span><span class="p">(</span><span class="n">eeg_hdrs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="n">display</span><span class="p">(</span><span class="n">eeg_hdrs</span><span class="p">[</span><span class="s2">&quot;/closed/dblock_0&quot;</span><span class="p">])</span>
 </pre></div>
@@ -865,13 +861,13 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;gain&#39;: 10000,
     &#39;hphz&#39;: 0.01,
     &#39;lphz&#39;: 100.0,
-    &#39;mne_type&#39;: &#39;eog&#39;},
+    &#39;mne_type&#39;: &#39;eeg&#39;},
    &#39;lhz&#39;: {&#39;pos&#39;: &#39;lhz&#39;,
     &#39;neg&#39;: &#39;A1&#39;,
     &#39;gain&#39;: 10000,
     &#39;hphz&#39;: 0.01,
     &#39;lphz&#39;: 100.0,
-    &#39;mne_type&#39;: &#39;eog&#39;},
+    &#39;mne_type&#39;: &#39;eeg&#39;},
    &#39;MiPf&#39;: {&#39;pos&#39;: &#39;MiPf&#39;,
     &#39;neg&#39;: &#39;A1&#39;,
     &#39;gain&#39;: 10000,
@@ -967,13 +963,13 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
     &#39;gain&#39;: 20000,
     &#39;hphz&#39;: 0.01,
     &#39;lphz&#39;: 100.0,
-    &#39;mne_type&#39;: &#39;eog&#39;},
+    &#39;mne_type&#39;: &#39;eeg&#39;},
    &#39;rhz&#39;: {&#39;pos&#39;: &#39;rhz&#39;,
     &#39;neg&#39;: &#39;A1&#39;,
     &#39;gain&#39;: 20000,
     &#39;hphz&#39;: 0.01,
     &#39;lphz&#39;: 100.0,
-    &#39;mne_type&#39;: &#39;eog&#39;},
+    &#39;mne_type&#39;: &#39;eeg&#39;},
    &#39;A2&#39;: {&#39;pos&#39;: &#39;A2&#39;,
     &#39;neg&#39;: &#39;A1&#39;,
     &#39;gain&#39;: 20000,
@@ -1092,7 +1088,7 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
    &#39;rhz&#39;: {&#39;x&#39;: 6.7, &#39;y&#39;: 5.5, &#39;z&#39;: 1.1},
    &#39;rle&#39;: {&#39;x&#39;: 4.5, &#39;y&#39;: 7.7, &#39;z&#39;: -1.7}}},
  &#39;yhdr_file&#39;: &#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/mkpy/sub000rc.yhdr&#39;,
- &#39;yhdr_file_md5&#39;: &#39;ca100c4a6e66072cc75f84c1f6373ebb&#39;,
+ &#39;yhdr_file_md5&#39;: &#39;6acae31bea4e856dedd74153991c386b&#39;,
  &#39;streams&#39;: {&#39;dblock_ticks&#39;: {&#39;jdx&#39;: 0,
    &#39;source&#39;: &#39;t_dblock_ticks&#39;,
    &#39;name&#39;: &#39;dblock_ticks&#39;,
@@ -1954,7 +1950,7 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
  &#39;recordsize&#39;: 256,
  &#39;nrawrecs&#39;: 0,
  &#39;nchans&#39;: 32,
- &#39;mkh5_version&#39;: &#39;0.2.6&#39;,
+ &#39;mkh5_version&#39;: &#39;0.2.7&#39;,
  &#39;raw_dig_header&#39;: {&#39;magic&#39;: 38821,
   &#39;epoch_len&#39;: 0,
   &#39;nchans&#39;: 32,
@@ -1992,13 +1988,13 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
   &#39;idxoffhi&#39;: 0,
   &#39;chndes3&#39;: &#39;&#39;},
  &#39;eeg_file&#39;: &#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/mkdig/sub000rc.crw&#39;,
- &#39;eeg_file_stat&#39;: {&#39;st_atime&#39;: 1634598479.673205,
-  &#39;st_atime_ns&#39;: 1634598479673204987,
+ &#39;eeg_file_stat&#39;: {&#39;st_atime&#39;: 1653868489.9435065,
+  &#39;st_atime_ns&#39;: 1653868489943506505,
   &#39;st_blksize&#39;: 1048576,
   &#39;st_blocks&#39;: 2634,
   &#39;st_ctime&#39;: 1595687024.3686264,
   &#39;st_ctime_ns&#39;: 1595687024368626446,
-  &#39;st_dev&#39;: 50,
+  &#39;st_dev&#39;: 51,
   &#39;st_gid&#39;: 705412,
   &#39;st_ino&#39;: 32575851,
   &#39;st_mode&#39;: 33056,
@@ -2009,7 +2005,7 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
   &#39;st_size&#39;: 1326550,
   &#39;st_uid&#39;: 1004346},
  &#39;log_file&#39;: &#39;/mnt/cube/home/turbach/TPU_Projects/mkpy_data_examples/mkdig/sub000rc.x.log&#39;,
- &#39;uuid&#39;: &#39;58690678-9e04-4a8c-987c-fc562a9fbeae&#39;,
+ &#39;uuid&#39;: &#39;373db6fc-f606-4c41-b153-38bb58cd8e2c&#39;,
  &#39;eeg_file_md5&#39;: &#39;610919a37fc74e522f7e803e09f3b2f7&#39;,
  &#39;log_file_md5&#39;: &#39;72c5f0df67bd0f319601e11d35c20dfe&#39;,
  &#39;h5_dataset&#39;: &#39;/closed/dblock_0&#39;}
@@ -2021,8 +2017,7 @@ dict_keys([&#39;/cals_10uV_after/dblock_0&#39;, &#39;/cals_AD_before/dblock_0&#3
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pprint</span> <span class="k">as</span> <span class="nn">pp</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pprint</span> <span class="k">as</span> <span class="nn">pp</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">h5py</span>
 
@@ -2100,9 +2095,11 @@ dict_keys([&#39;runsheet&#39;, &#39;apparatus&#39;, &#39;yhdr_file&#39;, &#39;yh
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Resting EEG</a></li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="pm.html"
-                        title="previous chapter">Picture memory</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="pm.html"
+                          title="previous chapter">Picture memory</a></p>
+  </div>
         </div>
       </div>
       <div class="clearer"></div>
@@ -2116,13 +2113,13 @@ dict_keys([&#39;runsheet&#39;, &#39;apparatus&#39;, &#39;yhdr_file&#39;, &#39;yh
         <li class="right" >
           <a href="pm.html" title="Picture memory"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mkpy_data_examples 0.0.6 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Resting EEG</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Thomas P. Urbach.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.0.
     </div>
   </body>
 </html>

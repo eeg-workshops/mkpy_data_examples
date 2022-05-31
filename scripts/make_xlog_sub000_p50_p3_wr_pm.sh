@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # ../mkdig/sub000c5.crw
 # ../mkdig/sub000c.crw
